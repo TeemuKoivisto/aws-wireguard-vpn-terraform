@@ -6,9 +6,9 @@ To run them, you need:
 - Wireguard (`brew install wireguard-tools`)
 - AWS credentials
 
-1. Create Wireguard conf at: `/opt/homebrew/etc/wireguard`
-2. Update its conf to `wg0.conf`, replacing only PrivateKey
-3. Create S3 bucket in a region of your desire
+1. Create Wireguard conf eg. `cd /opt/homebrew/etc/wireguard && wg genkey | tee privatekey | wg pubkey > publickey`
+2. From the repo root, create `wg0.conf` from the template here, substituting your generated PrivateKey: `sed "s|PrivateKey = .*|PrivateKey = $(cat /opt/homebrew/etc/wireguard/privatekey)|" wg0.conf > /opt/homebrew/etc/wireguard/wg0.conf && chmod 600 /opt/homebrew/etc/wireguard/wg0.conf`
+3. Create S3 bucket in a region of your desire (eg. `aws s3 mb s3://my-bucket --region eu-central-1`)
 4. Copy env `cp .env-example .env`
 5. In `.env` change:
 

@@ -66,7 +66,7 @@ wdown)
   sudo wg-quick down wg0
   ;;
 *)
-  echo $"Usage: $0 ssh <ip>|wup|wdown|tf <commands>|conf <public_key> <allowed_ips>"
+  echo $"Usage: $0 ssh <ip>|sync|wup|wdown|tf <commands>|conf <public_key> <allowed_ips>"
   exit 1
   ;;
 esac
